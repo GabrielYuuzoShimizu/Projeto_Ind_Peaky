@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../imagens/peaky-logo2.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peaky Blinders | Dashboards</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="../js/funcoes.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- scripts do Chart.js -->
+    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+
+</head>
+
+<body onload="validarSessao()">
+
+    <div class="janela">
+
+        <div class="janela2">
+            <div class="header-left">
+                <h1>Peaky Blinders</h1>
+
+                <div class="hello">
+                    <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                </div>
+
+                <div class="btn-nav-white">
+                    <a href="./cards.html">
+                        <h3>Regras</h3>
+                    </a>
+                </div>
+
+                <div class="btn-nav">
+                    <a href="https://trends.google.com.br/trends/explore?geo=BR&q=%2Fm%2F0ql2gt3,%2Fg%2F11f4034qyf">
+                        <h3>Gráficos</h3>
+                    </a>
+                </div>
+
+                <div class="btn-nav-white">
+                    <a href="./mural.html">
+                        <h3>Mural de Comentário</h3>
+                    </a>
+                </div>
+
+                <div class="btn-logout" onclick="limparSessao()">
+                    <h3>Sair</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="graph">
+            <h3>Nos últimos 12 meses</h3>
+            <canvas id="canvas_grafico"></canvas>
+        </div>
+
+        <div class="graph2">
+            <h3>Na última semana</h3>
+            <canvas id="canvas_grafico2"></canvas>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+
+    grafico()
+    function grafico() {
+        const labels = [
+            '20 mai de 2021',
+            '30 mai de 2021',
+            '5 de set de 2021',
+            '19 de set de 2021',
+            '12 de dez de 2021',
+            '23 de dez de 2021',
+            '8 de jan de 2022',
+
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Cobra Kai',
+                borderColor: 'rgb(0,255,0)',
+                data: [0, 10, 5, 2, 20, 30, 45],
+            },
+            {
+                label: 'Peaky Blinders',
+                borderColor: 'rgb(0, 0, 255)',
+                data: [0 + 10, 10 + 10, 5 + 10, 2 + 10, 20 + 10, 30 + 10, 45 + 10],
+            }
+            ]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {}
+        };
+
+        const myChart = new Chart(
+            document.getElementById('canvas_grafico'),
+            config
+        );
+
+    }
+</script>
+
+<script>
+
+
+    grafico2()
+    function grafico2() {
+        const labels = [
+            '16 mai de 2022',
+            '17 mai de 2022',
+            '18 de mai de 2022',
+            '19 de mai de 2022',
+            '20 de mai de 2022',
+            '21 de mai de 2022',
+            '22 de mai de 2022',
+
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Cobra Kai',
+                borderColor: 'rgb(255,255,0)',
+                data: [0, 20, 10, 8, 25, 35, 55],
+            },
+            {
+                label: 'Peaky Blinders',
+                borderColor: 'rgb(255,0,0)',
+                data: [0 + 15, 10 + 20, 5 + 15, 2 + 20, 20 + 15, 30 + 15, 45 + 15],
+            }
+            ]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {}
+        };
+
+        const myChart = new Chart(
+            document.getElementById('canvas_grafico2'),
+            config
+        );
+
+    }
+</script>
